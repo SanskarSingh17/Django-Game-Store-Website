@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main_content %}
+
+<div class="col-md-4 mt-5 mx-auto shadow p-3 mb-5 bg-body rounded">
+    <h2>Registration</h2>
+    <form action="/register" method="post">
+        {% csrf_token %}
+        {% if errorMsg %}
+            <div class="alert alert-danger" role="alert">
+                {{ errorMsg }}
+            </div>
+        {% endif %}
+        <div class="mb-3">
+            <label class="form-label"><strong>Username:</strong></label>
+            <input type="text" class="form-control" name="username"  placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Email:</strong></label>
+            <input type="email" class="form-control" name="useremail"  placeholder="email@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="input2" class="form-label"><strong>Password:</strong></label>
+            <input type="password" class="form-control" name="userpassword" id="input2" placeholder="enter your password(atleast 8 characters)">
+        </div>
+        <div class="mb-3">
+            <label for="input3" class="form-label"><strong>Confirm Password:</strong></label>
+            <input type="password" class="form-control" name="confirmpassword" id="input3" placeholder="please reenter the password" >
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        &nbsp;&nbsp;&nbsp; Already a user? <a class="anchor" href="/login" >Login</a>
+    </form>
+    </div>
+{% endblock main_content %}

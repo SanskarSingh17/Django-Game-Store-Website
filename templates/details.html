@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main_content %}
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{ Games.pimage.url }}" class="card-img-top" alt="No Image" height="450px",width='90%'>
+    </div>
+    <div class="col-md-6"></div>
+        <h2>Name:{{ Games.name }}</h2>
+        <p> <strong>Type: {{ Games.type }}</strong></p>
+        <p> <strong>Price: {{ Games.price }} Rs</strong></p>
+        <a href="/index" class="btn btn-primary">Back </a>
+        <a href="/addtocart/{{Games.id}}" class="btn btn-primary">Add To Cart </a>&nbsp;&nbsp;
+        <a href="/viewcart" class="btn btn-primary">View Vart </a>&nbsp;&nbsp;
+        <a href="/index" class="btn btn-primary">Shop More </a>
+    </div>
+</div>
+{% endblock main_content %}

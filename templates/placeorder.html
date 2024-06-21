@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Place Order{% endblock title %}
+
+{% block main_content %}
+<div class="row">
+    <div class="col-md-8">
+         <h4 class="bg-primary text-white ">Order Details</h4>
+        {% for cart in mycart %}
+        <div class="row m-1" style="border: rgb(255, 124, 16) solid 2px;" >
+          <div class="col-md-6">
+             <img src="{{ c.gid.pimage.url }}" class="card-img-top" alt="..." >
+        </div>
+        <div class="col-md-6">
+                <h5 class="card-title"> Name:{{ c.gid.name }}</h5>
+                <p> <strong>Type: {{ c.gid.type }}</strong></p>
+                <p> <strong>Price: {{ c.gid.price }}Rs</strong></p>
+                {% if c.quantity > 1 %}
+                {% endif %}
+                <strong> {{ c.quantity }}</strong>  
+        </div>
+    </div>
+        {% endfor %}
+        <div class="col-md-4">
+            <h5 class="bg-primary text-white ">Bill Details</h5>
+            <strong style="color: red;"> Total Items: </strong> {{count}} <br><br>
+            <strong> Bill:  </strong> Rs. {{total}} <br><br>
+            <a href="/makepayment"><button class="btn btn-primary">Make payment</button></a>
+
+        </div>
+</div>
+
+{% endblock main_content %}

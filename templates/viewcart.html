@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main_content %}
+<div class="row">
+    <div class="col-md-8">
+         <h4 class="bg-primary text-white ">Cart Details</h4>
+        {% for c in cart %}
+        <div class="row m-1" style="border: rgb(255, 124, 16) solid 2px;" >
+          <div class="col-md-6">
+             <img src="{{ c.gid.pimage.url }}" class="card-img-top" alt="..." >
+        </div>
+        <div class="col-md-6">
+                <h5 class="card-title"> Name:{{ c.gid.name }}</h5>
+                <p> <strong>Branch: {{ c.gid.type }}</strong></p>
+                <p> <strong>Percentage: {{ c.gid.price }}Rs</strong></p>
+                {% if c.quantity > 1 %}
+                <a href="/updateqty/0/{{c.id}}"><button class="btn btn-primary">-</button></a>&nbsp;
+                {% endif %}
+                <strong> {{ c.quantity }}</strong>
+                <a href="/updateqty/1/{{c.id}}"><button class="btn btn-primary">+</button></a><br>
+                <a href="/delete/{{ c.id }}"><button class="btn btn-primary">Delete</button></a>
+               
+        </div>
+    </div>
+        {% endfor %}
+        <div class="col-md-4">
+            <h5 class="bg-primary text-white ">Bill Details</h5>
+            <h5> Total Items: {{count}}</h5>
+            <h5> Bill: Rs.{{total}} </h5>
+            <a href="/placeorder"><button class="btn btn-primary">Place Order</button></a>
+
+        </div>
+</div>
+{% endblock main_content %}

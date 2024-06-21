@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main_content %}
+
+<div class="col-md-4 mt-5 mx-auto shadow p-3 mb-5 bg-body rounded">
+    <h2>Login</h2>
+    <form action="/login" method="post">
+        {% csrf_token %}
+        {% if success %}
+            <div class="alert alert-success" role="alert">
+                {{ success }}
+            </div>
+        {% endif %}
+        {% if errorMsg %}
+            <div class="alert alert-danger" role="alert">
+                {{ errorMsg }}
+            </div>
+        {% endif %}
+        <div class="mb-3">
+            <label class="form-label"><strong>Username:</strong></label>
+            <input type="text" class="form-control"  placeholder="name@example.com" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="input2" class="form-label"><strong>Password:</strong></label>
+            <input type="password" class="form-control" id="input2" name="userpassword" placeholder="enter your password(atleast 8 characters)">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        &nbsp;&nbsp;&nbsp; Not a user? <a class="anchor" href="/register" >Register</a>
+    </form>
+    </div>
+{% endblock main_content %}

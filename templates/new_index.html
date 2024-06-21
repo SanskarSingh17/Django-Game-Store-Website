@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main_content %}
+<div class="container">
+  <div class="row">
+    {% for g in Games %}
+      <div class="col-md-3">
+        <div class="card" style="width: 100%;">
+          <img src="{{ g.pimage.url }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ g.name }}</h5>
+            <p> <strong>{{ g.type }}</strong></p>
+            <p> <strong>{{ g.price }}</strong></p>
+            <a href="/details/{{g.id}}" class="btn btn-primary btn-sm">View Details</a>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock main_content %}
